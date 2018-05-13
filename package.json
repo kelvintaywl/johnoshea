@@ -4,7 +4,8 @@
   "description": "helloworld app for FutsalTokyo",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "jest --config ./jest.config.js --forceExit"
   },
   "repository": "https://github.com/futsaltokyo/johnoshea",
   "author": "Kelvin Tay <kelvintaywl@gmail.com>",
@@ -16,6 +17,8 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0"
+    "eslint-plugin-import": "^2.11.0",
+    "jest": "^22.4.3",
+    "supertest": "^3.1.0"
   }
 }
