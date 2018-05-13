@@ -1,4 +1,5 @@
 # John O Shea
+[![CircleCI](https://circleci.com/gh/futsaltokyo/johnoshea.svg?style=svg)](https://circleci.com/gh/futsaltokyo/johnoshea)
 
 ## Disclaimer
 
