@@ -56,6 +56,7 @@ jobs:
           echo "PR from kelvintaywl/johnoshea:case3 -> kelvintaywl-cci/johnoshea:master -> futsaltokyo/johnoshea:master"
           echo "commit by kelvintaywl"
           echo "kelvintaywl is following futsaltokyo/johnoshea & kelvintaywl-cci/johnoshea on Server"
+          echo "kelvintaywl is now not following kelvintaywl-cci/johnoshea"
       - finish:
           circleci_domain: custeng-server-4.eks-dev.sphereci.com
 
