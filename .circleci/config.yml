@@ -1,5 +1,10 @@
 version: 2.1
 
+orbs:
+  continuation: circleci/continuation@0.4.0
+
+setup: true
+
 jobs:
   build:
     docker:
@@ -8,8 +13,10 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - continuation/finish:
+          circleci_domain: custeng-server-4.eks-dev.sphereci.com
 
 workflows:
-  main:
+  setup:
     jobs:
       - build
