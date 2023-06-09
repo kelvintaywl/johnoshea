@@ -52,6 +52,10 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - run: |
+          echo "PR from kelvintaywl/johnoshea:case3 -> kelvintaywl-cci/johnoshea:master -> futsaltokyo/johnoshea:master"
+          echo "commit by kelvintaywl"
+          echo "kelvintaywl is following futsaltokyo/johnoshea & kelvintaywl-cci/johnoshea on Server"
       - finish:
           circleci_domain: custeng-server-4.eks-dev.sphereci.com
 
