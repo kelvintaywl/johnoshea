@@ -1,49 +1,5 @@
 version: 2.1
 
-# copied from source
-commands:
-  finish:
-    description: |
-      Makes a post request to https://circleci.com/api/v2/pipeline/continue with an empty config to advance the pipeline, but not execute any further workflows, preventing other continuations.
-    parameters:
-      circleci_domain:
-        default: circleci.com
-        description: The domain of the CircleCI installation - defaults to circleci.com. (Only necessary for CircleCI Server users)
-        type: string
-    steps:
-      - run:
-          command: |
-            if ! which curl > /dev/null; then
-                echo "curl is required to use this command"
-                exit 1
-            fi
-
-            if ! which jq > /dev/null; then
-                echo "jq is required to use this command"
-                exit 1
-            fi
-
-            JSON_BODY=$( jq -n \
-              --arg continuation "$CIRCLE_CONTINUATION_KEY" \
-              '{"continuation-key": $continuation, "configuration": "{version: 2, jobs: {}, workflows: {version: 2}}", parameters: {}}'
-            )
-            echo "$JSON_BODY"
-
-            [[ $(curl \
-                    -o /dev/stderr \
-                    -w '%{http_code}' \
-                    -XPOST \
-                    -H "Content-Type: application/json" \
-                    -H "Accept: application/json"  \
-                    --data "${JSON_BODY}" \
-                    "https://${CIRCLECI_DOMAIN}/api/v2/pipeline/continue") \
-              -eq 200 ]]
-          environment:
-            CIRCLECI_DOMAIN: <<parameters.circleci_domain>>
-          name: Finish Pipeline
-
-setup: true
-
 jobs:
   build:
     docker:
@@ -52,8 +8,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - finish:
-          circleci_domain: custeng-server-4.eks-dev.sphereci.com
 
 workflows:
   setup:
